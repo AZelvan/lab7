@@ -18,7 +18,7 @@ class Users(UserMixin, db.Model):
     pwd = db.Column(db.String(300), nullable=False)
 
     def get_data(self):
-        return self.username, self.pwd
+        return self.email, self.pwd
 
     def get_id(self):
         return self.id

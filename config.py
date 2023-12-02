@@ -1,11 +1,14 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_limiter import Limiter
 
 
 
 
 app = Flask(__name__)
+
+limiter = Limiter(app)
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'

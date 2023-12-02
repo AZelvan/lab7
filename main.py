@@ -5,6 +5,7 @@ from routes.login import first_route
 from routes.sign_up import second_route
 
 
+
 app.register_blueprint(first_route)
 app.register_blueprint(second_route)
 
