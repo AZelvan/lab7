@@ -1,28 +1,11 @@
-from config import app
-from flask import Blueprint, request, render_template, redirect
-from flask_login import logout_user, login_required, current_user
-from routes.login import first_route
-from routes.sign_up import second_route
+from route.login import fetch
+from config import app,db, login_manager
 
 
-
-app.register_blueprint(first_route)
-app.register_blueprint(second_route)
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect("/login")
-
-@app.route("/")
-@login_required
-def profile():
-    return render_template('index.html', name=current_user.username)
+db.init_app(app)
+login_manager.init_app(app)
+app.register_blueprint(fetch)
 
 
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
